@@ -1,0 +1,36 @@
+<div class="background" style="background-image: url('<%= image_path "background.jpg" %>');">
+  <%= link_to "Retourner aux Vehicules", cars_path, class: "btn btn-outline-warning", id: "back-btn" %>
+  <div class="flex-container">
+    <div class="card-product">
+      <img src="<%= @car.photo %>" />
+      <div class="card-product-infos">
+        <h2 class="text-center"><%= @car.model %></h2>
+        <ul>
+          <li><%= @car.date_of_production %></li>
+          <li><%= @car.engine %></li>
+          <li><%= @car.transmission %></li>
+          <li><%= @car.number_of_miles %>/Kms</li>
+          <li><%= @car.type_car %></li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-left: 20px">
+      <div class="card-2">
+          <% if @bookings.empty? %>
+            <%= simple_form_for [@car,@booking], data: { controller: "flatpickr" } do |f| %>
+                <%= f.input :start_date, as: :string, input_html: { class: "datepicker" } %>
+                <%= f.input :finish_date, as: :string, input_html: { class: "datepicker" } %>
+                <%= f.submit class: "btn btn-outline-warning"%>
+              <% end %>
+          <% else %>
+           <p>Votre réservation est confirmé</p>
+          <% end %>
+      </div>
+        <div style="width: 300px; height: 261px; margin-top: 30px;" id="map"
+          data-controller="mapbox"
+          data-mapbox-markers-value="<%= @markers.to_json %>"
+          data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      </div>
+  </div>
+</div>
+ß

@@ -1,0 +1,14 @@
+<h1>Ajouter une nouvelle voiture</h1>
+
+<%= simple_form_for @car do |f| %>
+    <%= f.input :model %>
+    <%= f.input :date_of_production %>
+    <%= f.input :engine %>
+    <%= f.input :transmission %>
+    <%= f.input :number_of_miles %>
+    <%= f.input :type_car %>
+    <%= f.input :price %>
+    <%= f.input :photo %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

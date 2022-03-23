@@ -1,0 +1,22 @@
+
+<% @cars.each do |car| %>
+<div class="container-my_cars">
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="<%= "#{car.photo}" %>" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title" style="color:black;"><%= "Vous louer 👉 #{car.car_maker} #{car.model}" %></h5>
+          <p class="card-text"></p>
+          <p class="card-text"><small class="text-muted"><%= "Au prix de : #{car.price}€/j à #{car.address}" %></small></p>
+          <%= link_to "Modifier", edit_car_path(id: car.id), class: "btn btn-primary" %>
+          <%= link_to 'Delete', car_path(id: car.id), method: :destroy %>
+          <%= link_to "Dashboard", dashboard_path, class: "btn btn-warning" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

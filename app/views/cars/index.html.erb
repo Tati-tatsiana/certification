@@ -1,0 +1,52 @@
+<div class="banner">
+    <div class=""> </div>
+    <h2 class="text-light">Choisissez votre <%= params[:type_car]  == nil ? "véhicule" : params[:type_car] %></h2>
+    <div class=""> </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-8 container-tags">
+        <h3>Filtrer</h3>
+        <a class="btn btn-outline-warning" href="<%= cars_path(type_car: "S.U.V") %>">S.U.V</a>
+        <a class="btn btn-outline-warning" href="<%= cars_path(type_car: "Citadine") %>">Citadine</a>
+        <a class="btn btn-outline-warning" href="<%= cars_path(type_car: "Berline") %>">Berline</a>
+        <a class="btn btn-outline-warning" href="<%= cars_path() %>">Toutes</a>
+    </div>
+</div>
+<div class="container cars-index">
+  <div class="row">
+    <div class="col-sm-4" style="width: 300px; height: 400px;"
+    data-controller="mapbox"
+    data-mapbox-markers-value="<%= @markers.to_json %>"
+    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+    <div class="col-sm-8">
+      <div class="container-cards">
+        <div class="main">
+            <ul class="cards">
+            <% @cars.each do |car| %>
+              <li class="cards_item">
+                <div class="card">
+                  <div class="card_image"><img src="<%= car.photo %>" alt="photo of the car" /></div>
+                  <div class="card_content">
+                    <h2 class="card_title"><%= car.car_maker %> <%= car.model %><span class="orange"> <br>
+                    <%= car.price %>€ / jour</span></h2>
+                    <div class="card_text">
+                      <p>
+                        <%= "🚗 #{car.type_car}" %>
+                      </p>
+                    </div>
+                    <%= link_to "Réserver", car_path(car.id), class: "btn-valider" %>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+</div>

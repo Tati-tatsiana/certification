@@ -1,0 +1,9 @@
+<h1>Bookings#new</h1>
+
+<%= form_for(@booking) do |f| %>
+  <%= f.label "Date de début" %>
+  <%= f.text_field :start_date %>
+  <%= f.label "Date de fin" %>
+  <%= f.text_field :finish_date %>
+  <%= f.submit %>
+<% end %>

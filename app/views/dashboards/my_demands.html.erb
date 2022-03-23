@@ -1,0 +1,17 @@
+<h1>Mes demandes de location</h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4" style="margin-bottom: 50px;">
+<% @my_demands.each do |booking| %>
+  <div class="col">
+    <div class="card">
+      <img src="<%= booking[:car_data][0][:photo] %>" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title" style="color:black;"><%= "Vous avez réservé de : #{booking[:start_date]} à #{booking[:finish_date]}" %></h5>
+        <p class="card-text">STATUS : EN ATTENTE</p>
+        <p class="card-text>Pour : <%= booking[:car_data][0][:price] %>€/J</p>
+        <%= link_to 'Dashboard', dashboard_path ,class: 'btn btn-primary'%>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>

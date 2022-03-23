@@ -1,0 +1,18 @@
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4" style="margin-bottom: 50px;">
+<% @ar_reservation.each do |reservation| %>
+  <div class="col">
+    <div class="card">
+      <img src="<%= reservation[1][:photo] %>" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title" style="color:black;"><%= "Vous avez loué : #{reservation[1][:car_maker]} #{reservation[1][:model]} à #{reservation[2][:first_name]}" %></h5>
+        <p class="card-text">STATUS : EN ATTENTE</p>
+        <p class="card-text>Pour : <%= reservation[1][:price] %>€/J</p>
+
+        <%= link_to 'Accepter la location', dashboard_path , class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
